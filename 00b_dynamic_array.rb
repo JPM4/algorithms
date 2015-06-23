@@ -1,5 +1,10 @@
 require_relative "00a_static_array"
 
+# This actually performs worse than Ruby's regular Array class;
+# shift and unshift are both O(n) here, whereas Ruby arrays shift at
+# O(1). The CircularBuffer implementation makes all operations O(1)
+# amortized.
+
 class DynamicArray
   attr_reader :capacity, :store, :length
 
