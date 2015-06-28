@@ -5,12 +5,17 @@ class BinaryMinHeap
     @store = []
   end
 
+  def empty?
+    @store.empty?
+  end
+
   def push(el)
     @store << el
     BinaryMinHeap.heapify_up(@store, @store.length - 1)
   end
 
   def extract
+    raise "Heap is empty!" if empty?
     @store[0], @store[-1] = @store[-1], @store[0]
     val = @store.pop
     BinaryMinHeap.heapify_down(@store, 0)
